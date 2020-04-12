@@ -1,0 +1,51 @@
+.kd-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 240px;
+}
+
+.kd-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.kd-card {
+    border: 1px solid #eee;
+    padding: 12px;
+}
+
+.m-t-24 {
+    margin-top: 24px;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.kd-button {
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid black;
+
+    cursor: pointer;
+}
+
+[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.kd-button__primary {
+    background-color: green;
+    color: white;
+}
+
+.kd-button__secondary {
+    background-color: transparent;
+}
+
+.kd-button__danger {
+    background-color: red;
+}
+

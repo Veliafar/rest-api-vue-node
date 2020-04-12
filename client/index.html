@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>REST API</title>
+    </head>
+    <body>
+
+        <div class="kd-container" id="app" v-cloak>
+            <h1>REST API</h1>
+
+            <form class="kd-form" @submit.prevent="createContact">
+                <div>
+                    <label for="name">Имя</label>
+                    <input type="text" id="name" v-model="form.name">
+                </div>
+                <div>
+                    <label for="value">Значение</label>
+                    <input type="text" id="value" v-model="form.value">
+                </div>
+                <button class="kd-button kd-button__primary" type="submit"
+                    :disabled="!canCreate">Создать</button>
+            </form>
+
+            <div v-if="loading">
+                <loader />
+            </div>
+            <div v-if="!loading">
+                <div v-if="contacts.length">
+                    <div class="kd-card m-t-24" v-for="contact in contacts">
+                        <div>
+                            <h5 :style="{color: contact.marked ? 'red' : 'black'}">{{contact.name}}</h5>
+                            <p>{{contact.value}}</p>
+                            <button class="kd-button kd-button__primary"
+                                @click="markContact(contact.id)"
+                                :disabled="contact.marked"
+                                v-if="!contact.marked">Отменить</button>
+                            <button class="kd-button kd-button__primary"
+                                @click="markContact(contact.id)"
+                                :disabled="!contact.marked"
+                                v-if="contact.marked">Вернуть</button>
+                            <button class="kd-button kd-button__danger"
+                                @click="removeContact(contact.id)">Удалить</button>
+                        </div>
+                    </div>
+                </div>
+                <p v-else>Контактов нет</p>
+            </div>
+        </div>
+
+
+
+
+        <script type="module" src="frontend.js"></script>
+    </body>
+</html>
